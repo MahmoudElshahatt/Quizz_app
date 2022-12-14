@@ -55,19 +55,20 @@ class ListFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
             adapter = quizListAdapter
-
-            viewModel.QuizList.observe(viewLifecycleOwner) { list ->
-                updateUI()
-                quizListAdapter.differ.submitList(list)
-                quizListAdapter.notifyDataSetChanged()
-            }
-
         }
+
+        viewModel.QuizList.observe(viewLifecycleOwner) { list ->
+            updateUI()
+            quizListAdapter.differ.submitList(list)
+            quizListAdapter.notifyDataSetChanged()
+        }
+
 
     }
 
     private fun updateUI() {
         binding.quizList.startAnimation(fadeInAnim)
+        binding.quizList.visibility=View.VISIBLE
         binding.listProgress.startAnimation(fadeOutAnim)
         binding.listProgress.visibility = View.GONE
 

@@ -22,7 +22,6 @@ class QuizListViewModel : ViewModel(), FireBaseRepository.FirebaseCallBack {
         fireBaseRepository.getQuizList()
     }
 
-
     override fun onResponse(quizList: List<Quiz>) {
         _QuizList.value = quizList.reversed()
     }

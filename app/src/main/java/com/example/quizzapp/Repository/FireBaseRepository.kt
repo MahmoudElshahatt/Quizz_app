@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 class FireBaseRepository(private val callBack: FirebaseCallBack) {
 
     private var firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
-    private var collection = firestore.collection("QuizList")
+    private var collection = firestore.collection("QuizList").whereEqualTo("visibility","public")
 
 
     fun getQuizList() = CoroutineScope(Dispatchers.IO).launch {
@@ -25,6 +25,5 @@ class FireBaseRepository(private val callBack: FirebaseCallBack) {
     interface FirebaseCallBack {
         fun onResponse(quizList: List<Quiz>)
         fun onError(e: Exception)
-
     }
 }

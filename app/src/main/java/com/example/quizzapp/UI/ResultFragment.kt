@@ -5,56 +5,71 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.quizzapp.R
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.example.quizzapp.ViewModel.QuizViewModel
+import com.example.quizzapp.databinding.FragmentResultBinding
+import com.google.firebase.firestore.DocumentSnapshot
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ResultFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ResultFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var binding: FragmentResultBinding
+    private lateinit var viewModel: QuizViewModel
+    private lateinit var quizId: String
+    private lateinit var currentUserId: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_result, container, false)
+        binding = FragmentResultBinding.inflate(layoutInflater)
+        viewModel = ViewModelProvider(this).get(QuizViewModel::class.java)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ResultFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ResultFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        quizId = ResultFragmentArgs.fromBundle(requireArguments()).quizId
+        if (viewModel.firebaseAuth.currentUser != null) {
+            currentUserId = viewModel.firebaseAuth.currentUser!!.uid
+        } else {
+            findNavController().popBackStack()
+        }
+        getUserResult()
+    }
+
+    private fun updateUI(result: DocumentSnapshot) {
+        binding.apply {
+            val correct = result.get("correct").toString()
+            val wrong = result.get("wrong").toString()
+            val unAnswered = result.get("unanswered").toString()
+
+            correctAnswerText.text = correct
+            wrongAnswerText.text = wrong
+            notAnsweredText.text = unAnswered
+
+            resultsHomeBtn.setOnClickListener {
+                findNavController().navigate(ResultFragmentDirections.actionResultFragmentToListFragment())
+            }
+            val total = correct.toLong() + wrong.toLong() + unAnswered.toLong()
+            val percent = (correct.toLong() * 100) / total
+
+            resultPercent.text = "$percent%"
+            resultProgress.progress = percent.toFloat()
+        }
+    }
+
+    private fun getUserResult() {
+        viewModel.fireStore.collection("QuizList").document(quizId)
+            .collection("Results").document(currentUserId).get()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val result: DocumentSnapshot = task.result
+                    updateUI(result)
                 }
+
             }
     }
 }

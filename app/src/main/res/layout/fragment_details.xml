@@ -39,7 +39,7 @@
         android:layout_marginEnd="16dp"
         android:ellipsize="end"
         android:fontFamily="@font/work_sans_regular"
-        android:maxLines="6"
+        android:maxLines="7"
         android:text="Quiz Description"
         android:textColor="@color/white"
         android:textSize="16sp"
@@ -73,19 +73,6 @@
         app:layout_constraintTop_toBottomOf="@+id/detail_difficulty" />
 
     <TextView
-        android:id="@+id/detail_score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-
-        android:fontFamily="@font/work_sans_regular"
-        android:text="Your last score"
-        android:textColor="@color/colorLightText"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/detail_questions"
-        app:layout_constraintTop_toBottomOf="@+id/detail_questions" />
-
-    <TextView
         android:id="@+id/detail_questions_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -97,19 +84,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/detail_questions"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/detail_questions" />
-
-    <TextView
-        android:id="@+id/detail_score_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:fontFamily="@font/work_sans_regular"
-        android:text="0.0"
-        android:textColor="@color/colorLightText"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/detail_score"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/detail_score" />
 
     <TextView
         android:id="@+id/detail_difficulty_text"

@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.example.quizzapp.Model.Quiz
 import com.example.quizzapp.R
 import com.example.quizzapp.ViewModel.QuizListViewModel
 import com.example.quizzapp.databinding.FragmentDetailsBinding
@@ -16,6 +17,7 @@ import com.example.quizzapp.databinding.FragmentDetailsBinding
 class DetailsFragment : Fragment() {
     private lateinit var binding: FragmentDetailsBinding
     private lateinit var viewModel: QuizListViewModel
+    private lateinit var currentQuiz: Quiz
     private var position = -1
     private var totalQuestions: Int = 0
     private lateinit var quizId: String
@@ -33,7 +35,7 @@ class DetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         position = DetailsFragmentArgs.fromBundle(requireArguments()).quizPosition
         viewModel.QuizList.observe(viewLifecycleOwner) { listOfQuiz ->
-            val currentQuiz = listOfQuiz[position]
+            currentQuiz = listOfQuiz[position]
             binding.apply {
                 Glide.with(requireContext())
                     .load(currentQuiz.image)
@@ -46,7 +48,7 @@ class DetailsFragment : Fragment() {
                 detailDifficultyText.text = currentQuiz.level
                 detailQuestionsText.text = currentQuiz.questions.toString()
 
-                totalQuestions = currentQuiz.questions?.toInt() ?: 0
+                totalQuestions = currentQuiz.questions ?: 0
                 quizId = currentQuiz.quizId.toString()
             }
         }
@@ -54,7 +56,8 @@ class DetailsFragment : Fragment() {
             findNavController().navigate(
                 DetailsFragmentDirections.actionDetailsFragmentToQuizFragment(
                     quizId,
-                    totalQuestions
+                    totalQuestions,
+                    currentQuiz.name
                 )
             )
         }

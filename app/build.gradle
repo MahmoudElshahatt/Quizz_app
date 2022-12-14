@@ -55,7 +55,8 @@ dependencies {
     //FireBase-FireStore
     implementation 'com.google.firebase:firebase-firestore:24.4.0'
     implementation 'com.google.firebase:firebase-auth:21.1.0'
-
+    //Progress bar
+    implementation 'com.mikhaellopez:circularprogressbar:3.1.0'
 
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.14.2'

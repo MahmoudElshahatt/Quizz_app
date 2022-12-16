@@ -3,7 +3,7 @@ The app shows a list of quizzes from Firebase Firestore, you can take any quiz a
 
 # App Preview
 
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/79477855/208084106-1f930b49-cef6-413b-a57b-1a122be07641.gif)
+<img src="https://user-images.githubusercontent.com/79477855/208084106-1f930b49-cef6-413b-a57b-1a122be07641.gif" width="350" height="680">
 
 # Screenshots
 

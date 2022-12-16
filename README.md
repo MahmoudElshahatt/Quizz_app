@@ -1,6 +1,10 @@
 # Description
 The app shows a list of quizzes from Firebase Firestore, you can take any quiz and get your result after you finish answering the questions.
 
+# App Preview
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/79477855/208084106-1f930b49-cef6-413b-a57b-1a122be07641.gif)
+
 # Screenshots
 
 <img src="https://user-images.githubusercontent.com/79477855/208082134-17667898-7f44-4448-be96-e7e7182e93bb.png" width="350" height="700"> <img src="https://user-images.githubusercontent.com/79477855/208082150-c6085f56-c203-4c6e-90ed-9ea99b15bfa2.png" width="350" height="700">

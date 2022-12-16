@@ -3,11 +3,13 @@ The app shows a list of quizzes from Firebase Firestore, you can take any quiz a
 
 # Screenshots
 
-<img src="https://user-images.githubusercontent.com/79477855/159120838-83a9abd7-bc09-4f56-af5c-b872892eb366.jpeg" width="350" height="700"> <img src="https://user-images.githubusercontent.com/79477855/159120848-8f6446f0-8b7a-4079-99a8-d95f2f106477.jpeg" width="350" height="700">
+<img src="https://user-images.githubusercontent.com/79477855/208082134-17667898-7f44-4448-be96-e7e7182e93bb.png" width="350" height="700"> <img src="https://user-images.githubusercontent.com/79477855/208082150-c6085f56-c203-4c6e-90ed-9ea99b15bfa2.png" width="350" height="700">
 
-<img src="https://user-images.githubusercontent.com/79477855/159120880-4aa428b4-9ea8-4b72-9de5-e6c135f73d51.jpeg" width="350" height="700"> <img src="https://user-images.githubusercontent.com/79477855/159120889-b428549f-583c-4d12-a75b-540ff6000de1.jpeg" width="350" height="700">
+<img src="https://user-images.githubusercontent.com/79477855/208082181-c1aa85c6-95e1-4995-94b6-3aea2ce8fdf7.png" width="350" height="700"> <img src="https://user-images.githubusercontent.com/79477855/208082339-b52ee31c-2a63-43c6-b0ac-b5efb566058c.png" width="350" height="700">
 
-<img src="https://user-images.githubusercontent.com/79477855/159121035-2030257d-8b0b-4ffa-b63c-102db946b861.jpeg" width="350" height="700"> <img src="https://user-images.githubusercontent.com/79477855/159120999-3c44ef9a-25e0-4ba1-82cd-6e50e9f3cce9.jpeg" width="350" height="700">
+<img src="https://user-images.githubusercontent.com/79477855/208082348-e2ea8146-f42c-4bda-a9f8-8cb273b56081.png" width="350" height="700"> <img src="https://user-images.githubusercontent.com/79477855/208082366-4ee2854c-3a93-4661-b9b9-c0d69ab256f0.png" width="350" height="700">
+
+<img src="https://user-images.githubusercontent.com/79477855/208082386-35e04fd9-e342-4246-9c50-b3037e84a073.png" width="350" height="700">
 
 # Tech stack & Open-source libraries
 
